@@ -7,6 +7,10 @@ env:
     - DOCKER_PORT_RANGE=2400:2500
     - SLIRP_PORTS=$(seq 2375 2500)
 
+install:
+  - sudo apt-get -qqy update
+  - sudo apt-get -qqy install slirp
+
 before_script:
   - "wget https://get.docker.com/builds/Linux/x86_64/docker-latest -O docker; chmod 755 docker"
   - git clone git://github.com/cptactionhank/sekexe
