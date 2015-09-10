@@ -1,23 +1,9 @@
 language: go
 
-addons:
-  apt:
-    packages:
-    - qemu
-
-env:
-  global:
-    - "HOST_IP=$(/sbin/ifconfig venet0:0 | grep 'inet addr' | awk -F: '{print $2}' | awk '{print $1}')"
-    - DOCKER_HOST=tcp://$HOST_IP:2375
-
-before_script:
-  - curl https://get.docker.com/builds/Linux/x86_64/docker-latest > docker && chmod 755 docker
-  - qemu --version
-  #- sleep 10; ps faux
-  #- "while ! ./docker info ; do sleep 1; done"
+sudo: required
+services:
+ -  docker
 
 script:
-  - ./docker version
-  #- docker build -t local/r-base r-base
-  #- docker run local/r-base r -e 'sapply(installed.packages()[,"Package"], tools::testInstalledPackage)'
+  - docker info
 
