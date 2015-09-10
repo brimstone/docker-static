@@ -1,6 +1,8 @@
 .PHONY: build push
 
 build:
+	go get -v -d
+	CGO_ENABLED=0 go build -a -installsuffix cgo -ldflags '-s' -o main
 	docker build -t brimstone/static .
 
 push:
