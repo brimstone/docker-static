@@ -1,8 +1,12 @@
 language: go
 
-sudo: required
+go:
+  - 1.6
+
 services:
- -  docker
+  - docker
 
 script:
-  - make
+  - git clone https://github.com/brimstone/projectbuilder
+  - export PROJECTBUILDER=$PWD/projectbuilder
+  - make travis

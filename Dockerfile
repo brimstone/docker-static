@@ -1,6 +1,6 @@
 FROM scratch
 
 CMD []
-ENTRYPOINT ["/main"]
+ENTRYPOINT ["/app"]
 
-ADD main /
+ADD app /
